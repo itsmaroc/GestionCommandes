@@ -1,0 +1,53 @@
+<div class="modal-header">
+    <h5 class="modal-title">
+      {{ isEditMode ? 'Modifier la commande' : 'Ajouter une commande' }}
+    </h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
+  </div>
+  
+  <div class="modal-body">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <!-- Nom du Client (Select) -->
+      <div class="mb-3">
+        <label for="commandeClient" class="form-label">Nom du Client</label>
+        <select id="commandeClient" class="form-select" [(ngModel)]="commande.client.clientid!" name="clientId" required>
+          <option value="">-- Sélectionnez un client --</option>
+          <!-- Exemple d'options dynamiques -->
+          <option *ngFor="let client of clients" [value]="client?.clientid">
+            {{ client.nom }}
+          </option>
+        </select>
+      </div>
+  
+      <!-- Date -->
+      <div class="mb-3">
+        <label for="commandeDate" class="form-label">Date</label>
+        <input type="date" id="commandeDate" class="form-control" [(ngModel)]="commande.date" name="date" required>
+      </div>
+  
+      <!-- Statut -->
+      <div class="mb-3">
+        <label for="commandeStatut" class="form-label">Statut</label>
+        <select id="commandeStatut" class="form-select" [(ngModel)]="commande.statut" name="statut" required>
+            <option value="">-- Sélectionnez un statut --</option>
+            <option *ngFor="let statut of statuses" [value]="statut">
+              {{ statut }}
+            </option>
+          </select>
+      </div>
+  
+      <!-- Total -->
+      <div class="mb-3">
+        <label for="commandeTotal" class="form-label">Total</label>
+        <input type="number" id="commandeTotal" class="form-control" [(ngModel)]="commande.total" name="total" placeholder="Entrez le montant total" required step="0.01">
+      </div>
+    </form>
+  </div>
+  
+  <div class="modal-footer">
+    <button class="btn btn-secondary" (click)="close()">Annuler</button>
+    <button class="btn btn-primary" [disabled]="f.invalid" (click)="onSubmit(f)">
+      {{ isEditMode ? 'Enregistrer' : 'Ajouter' }}
+    </button>
+  </div>
+  

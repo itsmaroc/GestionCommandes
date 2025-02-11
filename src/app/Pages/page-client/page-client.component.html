@@ -1,0 +1,35 @@
+
+<div class="container my-4">
+    <!-- En-tête avec titre et bouton Ajouter client -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2 class="mb-0">Liste des Clients</h2>
+      <button class="btn btn-primary" (click)="openEditModal(null)">Ajouter un nouveau client</button>
+    </div>
+
+    <!-- Tableau des clients -->
+    <table class="table table-bordered table-striped">
+      <thead class="table-light">
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Email</th>
+          <th>Télèphone</th>
+          <th>Adresse</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let client of clients">
+          <td>{{ client.clientid }}</td>
+          <td>{{ client.nom }} {{ client.prenom }}</td>
+          <td>{{ client.telephone }}</td>
+          <td>{{ client.email }}</td>
+          <td>{{ client.adresse }}</td>
+          <td>
+            <button class="btn btn-sm btn-secondary me-1" (click)="openEditModal(client)">Modifier</button>
+            <button class="btn btn-sm btn-danger" (click)="confirmDelete(client)">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

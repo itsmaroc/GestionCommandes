@@ -1,0 +1,44 @@
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Bienvenue sur le Tableau de Bord</h2>
+  
+    <div class="row">
+      <!-- Carte Clients -->
+      <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3">
+          <div class="card-header">Clients</div>
+          <div class="card-body">
+            <h5 class="card-title">Nombre de Clients</h5>
+            <p class="card-text display-4">{{ totalClients }}</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Carte Commandes -->
+      <div class="col-md-4">
+        <div class="card text-white bg-success mb-3">
+          <div class="card-header">Commandes</div>
+          <div class="card-body">
+            <h5 class="card-title">Commandes en Cours</h5>
+            <p class="card-text display-4">{{ commandesEnCours }}</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Carte Produits -->
+      <div class="col-md-4">
+        <div class="card text-white bg-warning mb-3">
+          <div class="card-header">Produits</div>
+          <div class="card-body">
+            <h5 class="card-title">Total Produits</h5>
+            <p class="card-text display-4">{{ totalProduits }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="text-center mt-4">
+      <button class="btn btn-primary me-2" (click)="navigateTo('clients')">Gérer les Clients</button>
+      <button class="btn btn-success me-2" (click)="navigateTo('commandes')">Gérer les Commandes</button>
+      <button class="btn btn-warning" (click)="navigateTo('produits')">Gérer les Produits</button>
+    </div>
+  </div>
